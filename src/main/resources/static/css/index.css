@@ -1,10 +1,33 @@
-.mood-buttons > label > object {
-    width: 100;
+@media (max-width: 768px) {
+    .btn,.btn-group {
+        width:100%;
+        border-radius: 0;
+    }
 }
 
+@media (min-width: 768px) {
+    .svg-btn {
+        width: 111; /* (750 container width / 5 buttons) - 24 padding - 15 */
+    }
+}
+
+@media (min-width: 992px) {
+    .svg-btn {
+        width: 155; /* (970 container width / 5 buttons) - 24 padding - 15 */
+    }
+}
+
+@media (min-width: 1200px) {
+    .svg-btn {
+        width: 195; /* (1170 container width / 5 buttons) - 24 padding - 15 */
+    }
+}
+
+
 .mood-buttons > .btn {
-    border-radius: 50px;
+    opacity: 0.3;
 }
 .mood-buttons > .btn:hover {
-    opacity: 0.7;
+    opacity: 1;
 }
+
