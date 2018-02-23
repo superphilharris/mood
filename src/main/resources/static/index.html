@@ -1,36 +1,53 @@
-<html ng-app="myApp" ng-init="name='Phil'" ng-controller="myCtrl">
-    <head>
-        <title>Hello World</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    </head>
-     
-    <body>
-        <label>Name :</label><input type="text" ng-model="name" placeholder="Enter your name"/>
-        <h1>Hello <span ng-bind="name"></span></h1>
-             
-        <h1>Hey {{firstName + lastName}}</h1>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js">
-        </script>
+<html ng-app="myApp" ng-init="name='Phil';" ng-controller="myCtrl">
+<head>
+    <title>Today's Feelings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css" type="text/css"/>
+</head>
 
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn">
-                <input type="radio" name="options" id="option1" autocomplete="off">
-                <img src="svg/132273-emotions-assets/calm.svg" alt="A bit meh">
-            </label>
-            <label class="btn">
-                <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
-            </label>
-            <label class="btn">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
-            </label>
-        </div>
-    </body>
+<body>
+
+<div class="container">
+    <div class="btn-group mood-buttons form-group" data-toggle="buttons">
+        <label class="btn btn-default" style="background-color: green;">
+            <input type="radio" name="options" id="HAPPY" autocomplete="off"/>&nbsp;
+            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
+        </label>
+        <label class="btn btn-default" style="background-color: lime;">
+            <input type="radio" name="options" id="NORMAL" autocomplete="off"/>&nbsp;
+            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
+        </label>
+        <label class="btn btn-default" style="background-color: yellow;">
+            <input type="radio" name="options" id="BIT_MEH" autocomplete="off"/>&nbsp;
+            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
+        </label>
+        <label class="btn btn-default" style="background-color: orange;">
+            <input type="radio" name="options" id="GRUMPY" autocomplete="off"/>&nbsp;
+            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
+        </label>
+        <label class="btn btn-default" style="background-color: red;">
+            <input type="radio" name="options" id="STRESSED" autocomplete="off"/>&nbsp;
+            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <textarea class="form-control" id="mood-comments" ng-model="moodComments" rows="4" placeholder="Any Comments?"></textarea>
+    </div>
+
+    <div class="btn btn-primary pull-right done-btn">OK</div>
+
+    <div>{{ moodComments }}</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+</body>
 
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
-    $scope.firstName= "John";
-    $scope.lastName= "Doe";
+
 });
+
 </script>
 </html>
