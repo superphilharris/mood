@@ -9,6 +9,9 @@
     .svg-btn {
         width: 111; /* (750 container width / 5 buttons) - 24 padding - 15 */
     }
+    .mood-buttons {
+        margin-top: 100px;
+    }
 }
 
 @media (min-width: 992px) {
