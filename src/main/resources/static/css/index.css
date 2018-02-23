@@ -1,3 +1,10 @@
 .mood-buttons > label > object {
     width: 100;
 }
+
+.mood-buttons > .btn {
+    border-radius: 50px;
+}
+.mood-buttons > .btn:hover {
+    opacity: 0.7;
+}
