@@ -9,6 +9,12 @@
 
 
 /* Now for all our various screen sizes */
+.svg-btn {
+    width: 20%;
+}
+.done-btn {
+    width: 100%;
+}
 
 @media (max-width: 768px) {
     .btn,.btn-group {
@@ -23,6 +29,9 @@
     }
     .mood-buttons {
         margin-top: 100px;
+    }
+    .done-btn {
+        width: 20%;
     }
 }
 
