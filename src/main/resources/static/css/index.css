@@ -1,3 +1,15 @@
+
+.mood-buttons > .btn {
+    opacity: 0.3;
+}
+.mood-buttons > .btn:hover {
+    opacity: 1;
+}
+
+
+
+/* Now for all our various screen sizes */
+
 @media (max-width: 768px) {
     .btn,.btn-group {
         width:100%;
@@ -24,13 +36,5 @@
     .svg-btn {
         width: 195; /* (1170 container width / 5 buttons) - 24 padding - 15 */
     }
-}
-
-
-.mood-buttons > .btn {
-    opacity: 0.3;
-}
-.mood-buttons > .btn:hover {
-    opacity: 1;
 }
 
