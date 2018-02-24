@@ -4,16 +4,11 @@ import co.logbook.mood.model.Feeling;
 import co.logbook.mood.model.Mood;
 import co.logbook.mood.repository.MoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 @Controller
@@ -22,6 +17,7 @@ public class MainController {
     @Autowired
     private MoodRepository moodRepository;
 
+    @PostMapping(path="/add")
     @GetMapping(path="/add")
     public @ResponseBody String addNewMood (@RequestParam Feeling feeling, @RequestParam String comment) {
         Mood mood = new Mood();

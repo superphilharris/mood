@@ -8,7 +8,7 @@
 
 <body>
 <div id="wrap">
-<div class="container" ng-app="moodScrape" ng-controller="moodScraperCtrl">
+<div class="container" ng-app="moodScrape" ng-controller="moodScrapeCtrl">
     <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
         <button class="btn btn-default" style="background-color: green;     {{ feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"      ng-click="feeling='HAPPY'" title="Happy">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
@@ -31,7 +31,7 @@
         <textarea class="form-control" id="mood-comments" ng-model="comment" rows="4" placeholder="Any Comments?" ng-maxlength=""></textarea>
     </div>
 
-    <div class="btn btn-primary pull-right done-btn">OK</div>
+    <div class="btn btn-primary pull-right done-btn" ng-click="addNewMood()">OK</div>
 
     <div>{{ comment }}</div>
     <div>{{ feeling }}</div>
@@ -52,10 +52,32 @@
 
 <script>
 var app = angular.module('moodScrape', []);
-app.controller('moodScraperCtrl', function($scope) {
+
+app.service('MoodService', function($http) {
+    this.add = function(mood) {
+        return $http({
+            method: "POST",
+            url: "mood/add",
+            data: JSON.stringify(mood),
+            dataType: "json"
+        });
+    }
+
+    this.getAllForToday = function() {
+        return $http.get("mood/allForToday");
+    }
+})
+
+app.controller('moodScrapeCtrl', function($scope) {
     $scope.moodComments = "";
     $scope.feeling = "BIT_MEH";
+
+    $scope.addNewMood = function() {
+        console.log("adding mood")
+    }
 });
+
+
 
 </script>
 </html>
