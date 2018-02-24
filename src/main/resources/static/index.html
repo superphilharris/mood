@@ -1,4 +1,4 @@
-<html ng-app="myApp" ng-init="name='Phil';" ng-controller="myCtrl">
+<html>
 <head>
     <title>Today's Feelings</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -8,7 +8,7 @@
 
 <body>
 
-<div class="container">
+<div class="container" ng-app="moodScrape" ng-controller="moodScraperCtrl">
     <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
         <button class="btn btn-default" style="background-color: green;     {{ feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"      ng-click="feeling='HAPPY'">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
@@ -36,12 +36,17 @@
     <div>{{ comment }}</div>
     <div>{{ feeling }}</div>
 </div>
+
+<div class="container">
+    This is where we will have the averages
+
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 </body>
 
 <script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
+var app = angular.module('moodScrape', []);
+app.controller('moodScraperCtrl', function($scope) {
     $scope.moodComments = "";
     $scope.feeling = "BIT_MEH";
 });

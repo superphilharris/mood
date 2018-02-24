@@ -29,9 +29,10 @@ public class MainController {
         return "Saved";
     }
 
-    @GetMapping(path="/allForDay")
-    public @ResponseBody Iterable<Mood> getAllMoodsForToday(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date date) {
-        return moodRepository.findByTimestampBetween(new Timestamp(date.getTime()), new Timestamp(System.currentTimeMillis()));
+    @GetMapping(path="/allForToday")
+    public @ResponseBody Iterable<Mood> getAllMoodsForToday() {
+        Date today = new Date();
+        return moodRepository.findByTimestampBetween(new Timestamp(today.getTime()), new Timestamp(System.currentTimeMillis()));
     }
 
     @GetMapping(path="/all")

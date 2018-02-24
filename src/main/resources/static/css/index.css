@@ -26,7 +26,7 @@
 
 @media (min-width: 768px) {
     .svg-btn {
-        width: 111; /* (750 container width / 5 buttons) - 24 padding - 15 */
+        width: 118; /* (750 container width / 5 buttons) - 24 padding - 15 */
     }
     .mood-buttons {
         margin-top: 100px;
@@ -38,13 +38,13 @@
 
 @media (min-width: 992px) {
     .svg-btn {
-        width: 155; /* (970 container width / 5 buttons) - 24 padding - 15 */
+        width: 162; /* (970 container width / 5 buttons) - 24 padding - 15 */
     }
 }
 
 @media (min-width: 1200px) {
     .svg-btn {
-        width: 195; /* (1170 container width / 5 buttons) - 24 padding - 15 */
+        width: 202; /* (1170 container width / 5 buttons) - 24 padding - 15 */
     }
 }
 
