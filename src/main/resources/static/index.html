@@ -53,14 +53,9 @@
 <script>
 var app = angular.module('moodScrape', []);
 
-app.service('MoodService', function($http) {
+app.service('moodService', function($http) {
     this.add = function(mood) {
-        return $http({
-            method: "POST",
-            url: "mood/add",
-            data: JSON.stringify(mood),
-            dataType: "json"
-        });
+        return $http.post("mood/add", JSON.stringify(mood));
     }
 
     this.getAllForToday = function() {
@@ -68,12 +63,16 @@ app.service('MoodService', function($http) {
     }
 })
 
-app.controller('moodScrapeCtrl', function($scope) {
+app.controller('moodScrapeCtrl', function($scope, $http) {
     $scope.moodComments = "";
     $scope.feeling = "BIT_MEH";
 
     $scope.addNewMood = function() {
         console.log("adding mood")
+        $http.get("mood/allForToday").then(function(response){
+            console.log(response);
+        })
+
     }
 });
 
