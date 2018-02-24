@@ -1,4 +1,4 @@
-/*
+
 .mood-buttons > .btn {
     opacity: 0.3;
 }
@@ -11,6 +11,7 @@
 /* Now for all our various screen sizes */
 .svg-btn {
     width: 20%;
+    pointer-events: none;
 }
 .done-btn {
     width: 100%;

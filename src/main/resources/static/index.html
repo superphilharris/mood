@@ -10,30 +10,31 @@
 
 <div class="container">
     <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
-        <button class="btn btn-default" style="background-color: green;">
+        <button class="btn btn-default" style="background-color: green;     {{ feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"      ng-click="feeling='HAPPY'">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: lime;">
+        <button class="btn btn-default" style="background-color: lime;      {{ feeling == 'NORMAL'? 'opacity: 0.8' : '' }}"     ng-click="feeling='NORMAL'">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: yellow;">
+        <button class="btn btn-default" style="background-color: yellow;    {{ feeling == 'BIT_MEH'? 'opacity: 0.8' : '' }}"    ng-click="feeling='BIT_MEH'">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: orange;">
+        <button class="btn btn-default" style="background-color: orange;    {{ feeling == 'GRUMPY'? 'opacity: 0.8' : '' }}"     ng-click="feeling='GRUMPY'">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: red;">
+        <button class="btn btn-default" style="background-color: red;       {{ feeling == 'STRESSED'? 'opacity: 0.8' : '' }}"   ng-click="feeling='STRESSED'">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
         </button>
     </div>
 
     <div class="form-group">
-        <textarea class="form-control" id="mood-comments" ng-model="moodComments" rows="4" placeholder="Any Comments?"></textarea>
+        <textarea class="form-control" id="mood-comments" ng-model="comment" rows="4" placeholder="Any Comments?"></textarea>
     </div>
 
     <div class="btn btn-primary pull-right done-btn">OK</div>
 
-    <div>{{ moodComments }}</div>
+    <div>{{ comment }}</div>
+    <div>{{ feeling }}</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 </body>
@@ -41,7 +42,7 @@
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
-    $scope.comment = "";
+    $scope.moodComments = "";
     $scope.feeling = "BIT_MEH";
 });
 
