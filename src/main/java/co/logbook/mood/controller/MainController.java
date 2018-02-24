@@ -18,13 +18,8 @@ public class MainController {
     private MoodRepository moodRepository;
 
     @PostMapping(path="/add")
-    @GetMapping(path="/add")
-    public @ResponseBody String addNewMood (@RequestParam Feeling feeling, @RequestParam String comment) {
-        Mood mood = new Mood();
-        mood.setFeeling(feeling);
-        mood.setComment(comment);
-        moodRepository.save(mood);
-        return "Saved";
+    public @ResponseBody Mood addNewMood (@RequestBody Mood mood) {
+        return moodRepository.save(mood);
     }
 
     @GetMapping(path="/allForToday")

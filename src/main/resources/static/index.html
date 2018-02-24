@@ -64,15 +64,14 @@ app.service('moodService', function($http) {
 })
 
 app.controller('moodScrapeCtrl', function($scope, $http) {
-    $scope.moodComments = "";
+    $scope.comment = "";
     $scope.feeling = "BIT_MEH";
 
     $scope.addNewMood = function() {
         console.log("adding mood")
-        $http.get("mood/allForToday").then(function(response){
+        $http.post("mood/add", { feeling: $scope.feeling, comment: $scope.comment }).then(function(response){
             console.log(response);
-        })
-
+        });
     }
 });
 
