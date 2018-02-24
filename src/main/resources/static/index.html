@@ -7,22 +7,22 @@
 </head>
 
 <body>
-
+<div id="wrap">
 <div class="container" ng-app="moodScrape" ng-controller="moodScraperCtrl">
     <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
-        <button class="btn btn-default" style="background-color: green;     {{ feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"      ng-click="feeling='HAPPY'">
+        <button class="btn btn-default" style="background-color: green;     {{ feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"      ng-click="feeling='HAPPY'" title="Happy">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: lime;      {{ feeling == 'NORMAL'? 'opacity: 0.8' : '' }}"     ng-click="feeling='NORMAL'">
+        <button class="btn btn-default" style="background-color: lime;      {{ feeling == 'NORMAL'? 'opacity: 0.8' : '' }}"     ng-click="feeling='NORMAL'" title="Normal">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: yellow;    {{ feeling == 'BIT_MEH'? 'opacity: 0.8' : '' }}"    ng-click="feeling='BIT_MEH'">
+        <button class="btn btn-default" style="background-color: yellow;    {{ feeling == 'BIT_MEH'? 'opacity: 0.8' : '' }}"    ng-click="feeling='BIT_MEH'" title="A bit meh">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: orange;    {{ feeling == 'GRUMPY'? 'opacity: 0.8' : '' }}"     ng-click="feeling='GRUMPY'">
+        <button class="btn btn-default" style="background-color: orange;    {{ feeling == 'GRUMPY'? 'opacity: 0.8' : '' }}"     ng-click="feeling='GRUMPY'" title="Grumpy">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
         </button>
-        <button class="btn btn-default" style="background-color: red;       {{ feeling == 'STRESSED'? 'opacity: 0.8' : '' }}"   ng-click="feeling='STRESSED'">
+        <button class="btn btn-default" style="background-color: red;       {{ feeling == 'STRESSED'? 'opacity: 0.8' : '' }}"   ng-click="feeling='STRESSED'" title="Stressed out">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
         </button>
     </div>
@@ -39,8 +39,14 @@
 
 <div class="container">
     This is where we will have the averages
-
 </div>
+</div>
+
+<footer id="footer">
+    <div class="container text-center">
+        Icons designed by <a href="https://www.flaticon.com/authors/baianat" target="_blank">Baianat</a> from Flaticon
+    </div>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 </body>
 

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Controller
 @RequestMapping(path="/mood")
@@ -31,8 +33,15 @@ public class MainController {
 
     @GetMapping(path="/allForToday")
     public @ResponseBody Iterable<Mood> getAllMoodsForToday() {
-        Date today = new Date();
-        return moodRepository.findByTimestampBetween(new Timestamp(today.getTime()), new Timestamp(System.currentTimeMillis()));
+        return moodRepository.findByTimestampBetween(getTodayAtMidnight(), new Timestamp(System.currentTimeMillis()));
+    }
+
+    private Timestamp getTodayAtMidnight() {
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        return new Timestamp(c.getTimeInMillis());
     }
 
     @GetMapping(path="/all")
