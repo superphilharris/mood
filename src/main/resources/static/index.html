@@ -8,35 +8,46 @@
 
 <body>
 <div id="wrap">
-<div class="container" ng-app="moodScrape" ng-controller="moodScrapeCtrl">
-    <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
-        <button class="btn btn-default" style="background-color: green;     {{ feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"      ng-click="feeling='HAPPY'" title="Happy">
-            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
-        </button>
-        <button class="btn btn-default" style="background-color: lime;      {{ feeling == 'NORMAL'? 'opacity: 0.8' : '' }}"     ng-click="feeling='NORMAL'" title="Normal">
-            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
-        </button>
-        <button class="btn btn-default" style="background-color: yellow;    {{ feeling == 'BIT_MEH'? 'opacity: 0.8' : '' }}"    ng-click="feeling='BIT_MEH'" title="A bit meh">
-            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
-        </button>
-        <button class="btn btn-default" style="background-color: orange;    {{ feeling == 'GRUMPY'? 'opacity: 0.8' : '' }}"     ng-click="feeling='GRUMPY'" title="Grumpy">
-            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
-        </button>
-        <button class="btn btn-default" style="background-color: red;       {{ feeling == 'STRESSED'? 'opacity: 0.8' : '' }}"   ng-click="feeling='STRESSED'" title="Stressed out">
-            <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
-        </button>
+    <div class="container" ng-app="moodScrape" ng-controller="moodScrapeCtrl">
+        <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
+            <button class="btn btn-default"
+                    style="background-color: green;     {{ feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"
+                    ng-click="feeling='HAPPY'" title="Happy">
+                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
+            </button>
+            <button class="btn btn-default"
+                    style="background-color: lime;      {{ feeling == 'NORMAL'? 'opacity: 0.8' : '' }}"
+                    ng-click="feeling='NORMAL'" title="Normal">
+                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
+            </button>
+            <button class="btn btn-default"
+                    style="background-color: yellow;    {{ feeling == 'BIT_MEH'? 'opacity: 0.8' : '' }}"
+                    ng-click="feeling='BIT_MEH'" title="A bit meh">
+                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
+            </button>
+            <button class="btn btn-default"
+                    style="background-color: orange;    {{ feeling == 'GRUMPY'? 'opacity: 0.8' : '' }}"
+                    ng-click="feeling='GRUMPY'" title="Grumpy">
+                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
+            </button>
+            <button class="btn btn-default"
+                    style="background-color: red;       {{ feeling == 'STRESSED'? 'opacity: 0.8' : '' }}"
+                    ng-click="feeling='STRESSED'" title="Stressed out">
+                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
+            </button>
+        </div>
+
+        <div class="form-group">
+            <textarea class="form-control" id="mood-comments" ng-model="comment" rows="4" placeholder="Any Comments?"
+                      ng-maxlength=""></textarea>
+        </div>
+
+        <div class="btn btn-primary pull-right done-btn" ng-click="addNewMood()">OK</div>
     </div>
 
-    <div class="form-group">
-        <textarea class="form-control" id="mood-comments" ng-model="comment" rows="4" placeholder="Any Comments?" ng-maxlength=""></textarea>
+    <div class="container">
+        This is where we will have the averages
     </div>
-
-    <div class="btn btn-primary pull-right done-btn" ng-click="addNewMood()">OK</div>
-</div>
-
-<div class="container">
-    This is where we will have the averages
-</div>
 </div>
 
 <footer id="footer">
@@ -71,6 +82,7 @@ app.controller('moodScrapeCtrl', function($scope, $http) {
         });
     }
 });
+
 
 
 
