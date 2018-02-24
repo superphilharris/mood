@@ -9,27 +9,22 @@
 <body>
 
 <div class="container">
-    <div class="btn-group mood-buttons form-group" data-toggle="buttons">
-        <label class="btn btn-default" style="background-color: green;">
-            <input type="radio" name="options" id="HAPPY" autocomplete="off"/>&nbsp;
+    <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
+        <button class="btn btn-default" style="background-color: green;">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
-        </label>
-        <label class="btn btn-default" style="background-color: lime;">
-            <input type="radio" name="options" id="NORMAL" autocomplete="off"/>&nbsp;
+        </button>
+        <button class="btn btn-default" style="background-color: lime;">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
-        </label>
-        <label class="btn btn-default" style="background-color: yellow;">
-            <input type="radio" name="options" id="BIT_MEH" autocomplete="off"/>&nbsp;
+        </button>
+        <button class="btn btn-default" style="background-color: yellow;">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
-        </label>
-        <label class="btn btn-default" style="background-color: orange;">
-            <input type="radio" name="options" id="GRUMPY" autocomplete="off"/>&nbsp;
+        </button>
+        <button class="btn btn-default" style="background-color: orange;">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
-        </label>
-        <label class="btn btn-default" style="background-color: red;">
-            <input type="radio" name="options" id="STRESSED" autocomplete="off"/>&nbsp;
+        </button>
+        <button class="btn btn-default" style="background-color: red;">
             <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
-        </label>
+        </button>
     </div>
 
     <div class="form-group">
@@ -46,7 +41,8 @@
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
-
+    $scope.comment = "";
+    $scope.feeling = "BIT_MEH";
 });
 
 </script>
