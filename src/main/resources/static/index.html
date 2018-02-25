@@ -38,7 +38,8 @@
         </div>
 
         <div class="form-group">
-            <textarea class="form-control" id="mood-comments" ng-model="new_mood.comment" rows="4" placeholder="Any Comments?"
+            <textarea class="form-control" id="mood-comments" ng-model="new_mood.comment" rows="4"
+                      placeholder="Any thoughts?"
                       ng-maxlength=""></textarea>
         </div>
 
@@ -46,23 +47,38 @@
     </div>
 
     <div class="container" ng-show="has_added_new_mood">
-        <div id="average-mood-wrapper">
-            <div class="average-color-background" style="background-color: green;"></div>
-            <div class="average-color-background" style="background-color: lime;"></div>
-            <div class="average-color-background" style="background-color: yellow;"></div>
-            <div class="average-color-background" style="background-color: orange;"></div>
-            <div class="average-color-background" style="background-color: red;"></div>
-            <div class="average-mood-indicator" style="left: {{ mood_average.average/5*100 }}%">
-                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg" ng-show="mood_average.closestFeeling=='HAPPY'"></object>
-                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg" ng-show="mood_average.closestFeeling=='NORMAL'"></object>
-                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg" ng-show="mood_average.closestFeeling=='BIT_MEH'"></object>
-                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg" ng-show="mood_average.closestFeeling=='GRUMPY'"></object>
-                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg" ng-show="mood_average.closestFeeling=='STRESSED'"></object>
+        <div>
+            <div id="average-mood-wrapper" class="form-group">
+                <div class="average-color-background" style="background-color: green;"></div>
+                <div class="average-color-background" style="background-color: lime;"></div>
+                <div class="average-color-background" style="background-color: yellow;"></div>
+                <div class="average-color-background" style="background-color: orange;"></div>
+                <div class="average-color-background" style="background-color: red;"></div>
+                <div class="average-mood-indicator" style="left: {{ mood_average.average/5*100 }}%">
+                    <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"
+                            ng-show="mood_average.closestFeeling=='HAPPY'"></object>
+                    <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"
+                            ng-show="mood_average.closestFeeling=='NORMAL'"></object>
+                    <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"
+                            ng-show="mood_average.closestFeeling=='BIT_MEH'"></object>
+                    <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"
+                            ng-show="mood_average.closestFeeling=='GRUMPY'"></object>
+                    <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"
+                            ng-show="mood_average.closestFeeling=='STRESSED'"></object>
+                </div>
             </div>
         </div>
-
-        <div ng-repeat="mood in mood_average.moods">{{ mood.comment }}</div>
-
+        <table class="table">
+            <tbody>
+            <tr ng-repeat="mood in mood_average.moods" ng-show="mood.comment">
+                <td>
+                    <p ng-repeat="line in (mood.comment | newlines)">
+                        {{ line }}
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -115,6 +131,13 @@ app.controller('moodCtrl', function($scope, $http) {
         });
     }
 });
+
+
+app.filter('newlines', function() {
+    return function(text) {
+        return text.split(/\n/g);
+    };
+})
 
 
 </script>
