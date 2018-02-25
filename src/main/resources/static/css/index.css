@@ -73,7 +73,7 @@
 
 /* ===================== */
 /* Average Mood for Team */
-.average-mood-wrapper {
+#average-mood-wrapper {
     position: relative;
 }
 .average-color-background {

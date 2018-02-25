@@ -29,6 +29,12 @@ public class MainController {
         return new MoodAverage(todaysMoods);
     }
 
+    /**
+     * Gets the timestamp for today at midnight, by:
+     * 1. Finding the current calendar time,
+     * 2. Resetting the hours, minutes and seconds to 0 for the calendar time
+     * @return the current time in a timestamp
+     */
     private Timestamp getTodayAtMidnight() {
         Calendar c = new GregorianCalendar();
         c.set(Calendar.HOUR_OF_DAY, 0);

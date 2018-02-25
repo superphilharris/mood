@@ -46,17 +46,18 @@
     </div>
 
     <div class="container" ng-controller="moodAverageCtrl">
-        <div class="average-mood-wrapper">
+        <div id="average-mood-wrapper">
             <div class="average-color-background" style="background-color: green;"></div>
             <div class="average-color-background" style="background-color: lime;"></div>
             <div class="average-color-background" style="background-color: yellow;"></div>
             <div class="average-color-background" style="background-color: orange;"></div>
             <div class="average-color-background" style="background-color: red;"></div>
-
-            <div class="average-mood-indicator">
+            <div class="average-mood-indicator" style="left: {{ mood_average.average/5*100 }}%">
                 <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
             </div>
         </div>
+
+
     </div>
 </div>
 
@@ -86,6 +87,7 @@ app.controller('moodScrapeCtrl', function($scope, $http) {
         comment: "",
         feeling: "BIT_MEH"
     };
+    console.log(document.getElementById('average-mood-wrapper').clientWidth)
 
     $scope.addNewMood = function() {
         $http.post("mood/add", $scope.new_mood).error(function(data){
@@ -98,10 +100,17 @@ app.controller('moodScrapeCtrl', function($scope, $http) {
 
 
 app.controller('moodAverageCtrl', function($scope, $http) {
+    $scope.mood_average = {
+        average: 2,
+        moods: [],
+        closestFeeling: "BIT_MEH"
+    }
+
+
     $http.get("mood/averageForToday").error(function(data){
         console.error(JSON.stringify(data))
     }).success(function(response){
-        console.log(response);
+        $scope.mood_average = response;
     })
 });
 
