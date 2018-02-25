@@ -49,7 +49,7 @@
     .svg-icon {
         width: 118; /* (750 container width / 5 buttons) - 32 padding */
     }
-    .mood-buttons, .average-mood-wrapper {
+    .mood-buttons, #average-mood-wrapper {
         margin-top: 100px;
     }
     .done-btn {

@@ -7,8 +7,8 @@
 </head>
 
 <body>
-<div id="wrap" ng-app="moodApp">
-    <div class="container" ng-controller="moodScrapeCtrl">
+<div id="wrap" ng-app="moodApp" ng-controller="moodCtrl">
+    <div class="container" ng-show="!has_added_new_mood">
         <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
             <button class="btn btn-default"
                     style="background-color: green;     {{ new_mood.feeling == 'HAPPY'? 'opacity: 1' : '' }}"
@@ -45,7 +45,7 @@
         <div class="btn btn-primary pull-right done-btn" ng-click="addNewMood()">OK</div>
     </div>
 
-    <div class="container" ng-controller="moodAverageCtrl">
+    <div class="container" ng-show="has_added_new_mood">
         <div id="average-mood-wrapper">
             <div class="average-color-background" style="background-color: green;"></div>
             <div class="average-color-background" style="background-color: lime;"></div>
@@ -53,7 +53,11 @@
             <div class="average-color-background" style="background-color: orange;"></div>
             <div class="average-color-background" style="background-color: red;"></div>
             <div class="average-mood-indicator" style="left: {{ mood_average.average/5*100 }}%">
-                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg" ng-show="mood_average.closestFeeling=='HAPPY'"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg" ng-show="mood_average.closestFeeling=='NORMAL'"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg" ng-show="mood_average.closestFeeling=='BIT_MEH'"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg" ng-show="mood_average.closestFeeling=='GRUMPY'"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg" ng-show="mood_average.closestFeeling=='STRESSED'"></object>
             </div>
         </div>
 
@@ -83,38 +87,34 @@ app.service('moodService', function($http) {
     }
 })
 
-app.controller('moodScrapeCtrl', function($scope, $http) {
+app.controller('moodCtrl', function($scope, $http) {
     $scope.new_mood = {
         comment: "",
         feeling: "BIT_MEH"
     };
-    console.log(document.getElementById('average-mood-wrapper').clientWidth)
-
-    $scope.addNewMood = function() {
-        $http.post("mood/add", $scope.new_mood).error(function(data){
-            console.log("ERROR: " + JSON.stringify(data));
-        }).success(function(data){
-            console.log("SUCCESS");
-        });
-    }
-});
-
-
-app.controller('moodAverageCtrl', function($scope, $http) {
     $scope.mood_average = {
         average: 2,
         moods: [],
         closestFeeling: "BIT_MEH"
     }
+    $scope.has_added_new_mood = false;
 
-
-    $http.get("mood/averageForToday").error(function(data){
-        console.error(JSON.stringify(data))
-    }).success(function(response){
-        $scope.mood_average = response;
-    })
+    var showAverage = function() {
+        $scope.has_added_new_mood = true;
+        $http.get("mood/averageForToday").error(function(data){
+            console.error(JSON.stringify(data))
+        }).success(function(response){
+            $scope.mood_average = response;
+        });
+    }
+    $scope.addNewMood = function() {
+        $http.post("mood/add", $scope.new_mood).error(function(data){
+            console.log("ERROR: " + JSON.stringify(data));
+        }).success(function(data){
+            showAverage();
+        });
+    }
 });
-
 
 
 </script>
