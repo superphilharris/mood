@@ -9,6 +9,7 @@
 <body>
 <div id="wrap" ng-app="moodApp" ng-controller="moodCtrl">
     <div class="container" ng-show="!has_added_new_mood">
+        <h1 class="summary-title">I feel ...</h1c>
         <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
             <button class="btn btn-default"
                     style="background-color: green;     {{ new_mood.feeling == 'HAPPY'? 'opacity: 1' : '' }}"
@@ -47,6 +48,7 @@
     </div>
 
     <div class="container" ng-show="has_added_new_mood">
+        <h1 class="summary-title">My team feels ...</h1>
         <div>
             <div id="average-mood-wrapper" class="form-group">
                 <div class="average-color-background" style="background-color: green;"></div>
