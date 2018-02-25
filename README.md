@@ -12,7 +12,7 @@
 ## Installation Instructions
 1. Ensure that you have at least the above technologies installed on a linux box (Excluding angular and bootstrap)
 2. cd to the root directory folder mood
-3. Run ./install.sh
+3. Run ./install.sh, and provide the mysql credentials
 4. Run the command `mvn spring-boot:run`
 5. Navigate to http://localhost:8080
 
