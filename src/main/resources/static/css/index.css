@@ -80,7 +80,14 @@
     width: 20%;
     padding-top: 20%;
     float: left;
+    opacity: 0.5;
 }
 .average-mood-indicator {
 	position: absolute;
+	padding: 12px;
+	margin: auto;
+	width: 20%;
+}
+.average-mood-indicator > .svg-icon {
+    width: auto;
 }
