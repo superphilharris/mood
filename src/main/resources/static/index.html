@@ -98,7 +98,11 @@ app.controller('moodScrapeCtrl', function($scope, $http) {
 
 
 app.controller('moodAverageCtrl', function($scope, $http) {
-    console.log("average is going!")
+    $http.get("mood/averageForToday").error(function(data){
+        console.error(JSON.stringify(data))
+    }).success(function(response){
+        console.log(response);
+    })
 });
 
 

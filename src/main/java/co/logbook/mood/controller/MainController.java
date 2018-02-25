@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 @Controller
 @RequestMapping(path="/mood")
@@ -22,9 +23,10 @@ public class MainController {
         return moodRepository.save(mood);
     }
 
-    @GetMapping(path="/allForToday")
-    public @ResponseBody Iterable<Mood> getAllMoodsForToday() {
-        return moodRepository.findByTimestampBetween(getTodayAtMidnight(), new Timestamp(System.currentTimeMillis()));
+    @GetMapping(path="/averageForToday")
+    public @ResponseBody MoodAverage getAverageMoodForToday() {
+        List<Mood> todaysMoods = moodRepository.findByTimestampBetween(getTodayAtMidnight(), new Timestamp(System.currentTimeMillis()));
+        return new MoodAverage(todaysMoods);
     }
 
     private Timestamp getTodayAtMidnight() {

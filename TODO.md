@@ -7,6 +7,7 @@
 - add unit tests to:
  - spring mvc
  - add validation to server for max length
+ - constructor of the average mood
 
 - fix the timestamp not being sent back after an add
 
