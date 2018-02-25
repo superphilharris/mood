@@ -19,10 +19,15 @@ fi
 
 
 # Now lets create the database
-echo "Using user=$mysql_user, password=$mysql_pass to create the database"
+echo "Using 
+username=$mysql_user, 
+password=$mysql_pass to create the 
+database=$database_name"
+
 if `which mysql > /dev/null`; then
 	mysql -u$mysql_user -p$mysql_pass -e "create database $database_name"
 	mysql -u$mysql_user -p$mysql_pass $database_name < mood.sql
+
 	# Now lets update the application properties file
         sed -i "s/spring\\.datasource\\.username.*/spring.datasource.username=$mysql_user/g" src/main/resources/application.properties
 	sed -i "s/spring\\.datasource\\.password.*/spring.datasource.password=$mysql_pass/g" src/main/resources/application.properties
