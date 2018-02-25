@@ -1,7 +1,7 @@
 package co.logbook.mood.controller;
 
-import co.logbook.mood.model.Feeling;
 import co.logbook.mood.model.Mood;
+import co.logbook.mood.model.MoodAverage;
 import co.logbook.mood.repository.MoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path="/mood")
-public class MainController {
+public class MoodController {
     @Autowired
     private MoodRepository moodRepository;
 
@@ -24,7 +24,8 @@ public class MainController {
     }
 
     @GetMapping(path="/averageForToday")
-    public @ResponseBody MoodAverage getAverageMoodForToday() {
+    public @ResponseBody
+    MoodAverage getAverageMoodForToday() {
         List<Mood> todaysMoods = moodRepository.findByTimestampBetween(getTodayAtMidnight(), new Timestamp(System.currentTimeMillis()));
         return new MoodAverage(todaysMoods);
     }

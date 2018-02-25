@@ -1,4 +1,4 @@
-package co.logbook.mood.controller;
+package co.logbook.mood.model;
 
 import co.logbook.mood.model.Feeling;
 import co.logbook.mood.model.Mood;
