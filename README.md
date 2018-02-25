@@ -11,7 +11,7 @@
 
 ## Instructions
 1. Ensure that you have at least the above technologies installed on a linux box (Excluding angular and bootstrap)
-2. If your mysql root password is 'root', then do nothing. Else, change the mood/src/main/resources/application.properties with the correct user and password.
+2. Change the mood/src/main/resources/application.properties with the correct mysql user and password. (Default is root, root)
 2. cd to the root directory folder mood
 3. Run the command `mvn spring-boot:run`
 4. Navigate to http://localhost:8080

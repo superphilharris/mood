@@ -30,7 +30,7 @@
 
 
 /* Now for all our various screen sizes */
-.svg-btn {
+.svg-icon {
     width: 20%;
     pointer-events: none;
 }
@@ -46,10 +46,10 @@
 }
 
 @media (min-width: 768px) {
-    .svg-btn {
+    .svg-icon {
         width: 118; /* (750 container width / 5 buttons) - 32 padding */
     }
-    .mood-buttons {
+    .mood-buttons, .average-mood-wrapper {
         margin-top: 100px;
     }
     .done-btn {
@@ -58,13 +58,13 @@
 }
 
 @media (min-width: 992px) {
-    .svg-btn {
+    .svg-icon {
         width: 162; /* (970 container width / 5 buttons) - 32 padding */
     }
 }
 
 @media (min-width: 1200px) {
-    .svg-btn {
+    .svg-icon {
         width: 202; /* (1170 container width / 5 buttons) - 32 padding */
     }
 }
@@ -79,4 +79,8 @@
 .average-color-background {
     width: 20%;
     padding-top: 20%;
+    float: left;
+}
+.average-mood-indicator {
+	position: absolute;
 }

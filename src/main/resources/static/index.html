@@ -13,27 +13,27 @@
             <button class="btn btn-default"
                     style="background-color: green;     {{ new_mood.feeling == 'HAPPY'? 'opacity: 0.8' : '' }}"
                     ng-click="new_mood.feeling='HAPPY'" title="Happy">
-                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-5.svg"></object>
             </button>
             <button class="btn btn-default"
                     style="background-color: lime;      {{ new_mood.feeling == 'NORMAL'? 'opacity: 0.8' : '' }}"
                     ng-click="new_mood.feeling='NORMAL'" title="Normal">
-                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/happy-4.svg"></object>
             </button>
             <button class="btn btn-default"
                     style="background-color: yellow;    {{ new_mood.feeling == 'BIT_MEH'? 'opacity: 0.8' : '' }}"
                     ng-click="new_mood.feeling='BIT_MEH'" title="A bit meh">
-                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/calm.svg"></object>
             </button>
             <button class="btn btn-default"
                     style="background-color: orange;    {{ new_mood.feeling == 'GRUMPY'? 'opacity: 0.8' : '' }}"
                     ng-click="new_mood.feeling='GRUMPY'" title="Grumpy">
-                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/nervous.svg"></object>
             </button>
             <button class="btn btn-default"
                     style="background-color: red;       {{ new_mood.feeling == 'STRESSED'? 'opacity: 0.8' : '' }}"
                     ng-click="new_mood.feeling='STRESSED'" title="Stressed out">
-                <object class="svg-btn" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
+                <object class="svg-icon" type="image/svg+xml" data="/svg/132273-emotions-assets/sad-8.svg"></object>
             </button>
         </div>
 
@@ -46,12 +46,15 @@
     </div>
 
     <div class="container">
-        <h1>Team Mood</h1>
         <div class="average-mood-wrapper">
-            <div class="average-color-background" style="background-color: green;">&nbsp;</div>
-            <div class="average-mood-indicator">&nbsp;</div>
+            <div class="average-color-background" style="background-color: green;"></div>
+            <div class="average-color-background" style="background-color: lime;"></div>
+            <div class="average-color-background" style="background-color: yellow;"></div>
+            <div class="average-color-background" style="background-color: orange;"></div>
+            <div class="average-color-background" style="background-color: red;"></div>
+
+            <div class="average-mood-indicator"><object class="svg-icon" type="image/svg+xml" data="/svg/132272-emotions-assets/happy-4.svg"></object></div>
         </div>
-        This is where we will have the averages
     </div>
 </div>
 
