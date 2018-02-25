@@ -8,7 +8,7 @@
 
 <body>
 <div id="wrap" ng-app="moodApp" ng-controller="moodCtrl">
-    <div class="container" ng-show="!has_added_new_mood">
+    <div class="container" ng-show="current_view == 'ADD_NEW_MOOD'">
         <h1 class="summary-title">I feel ...</h1>
         <div class="btn-group mood-buttons form-group" role="group" data-toggle="buttons">
             <button class="btn btn-default"
@@ -45,9 +45,11 @@
         </div>
 
         <div class="btn btn-primary pull-right done-btn" ng-click="addNewMood()">OK</div>
+
     </div>
 
-    <div class="container" ng-show="has_added_new_mood">
+
+    <div class="container" ng-show="current_view == 'AVERAGE_MOOD'">
         <h1 class="summary-title">My team feels ...</h1>
         <div>
             <div id="average-mood-wrapper" class="form-group">
@@ -82,7 +84,18 @@
             </tbody>
         </table>
     </div>
+
+    <div class="container" ng-show="current_view == 'TRY_TOMORROW'" ng-click="showAverage()">
+        <h1 class="summary-title">Try Tomorrow</h1>
+        <p align="center">
+            Sorry, you have already submitted your response for today.<br/>
+            Try again tomorrow!
+            <br/><br/>
+            Click anywhere to see your team average.
+        </p>
+    </div>
 </div>
+
 
 <footer id="footer">
     <div class="container text-center">

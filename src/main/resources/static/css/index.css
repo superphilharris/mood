@@ -27,7 +27,9 @@
 .mood-buttons > .btn:hover {
     opacity: 0.8 !important;
 }
-
+.summary-title {
+    text-align: center;
+}
 
 /* Now for all our various screen sizes */
 .svg-icon {

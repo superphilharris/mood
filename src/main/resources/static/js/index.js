@@ -1,4 +1,4 @@
-var app = angular.module('moodApp', []);
+var app = angular.module('moodApp', ['ngCookies']);
 
 app.service('moodService', function($http) {
     this.add = function(mood) {
@@ -10,7 +10,7 @@ app.service('moodService', function($http) {
     }
 })
 
-app.controller('moodCtrl', function($scope, $http) {
+app.controller('moodCtrl', function($scope, $http, $cookies) {
     $scope.new_mood = {
         comment: "",
         feeling: "BIT_MEH"
@@ -20,10 +20,17 @@ app.controller('moodCtrl', function($scope, $http) {
         moods: [],
         closestFeeling: "BIT_MEH"
     }
-    $scope.has_added_new_mood = false;
+    console.log($cookies.get('addedMood'))
+    $scope.current_view = "TRY_TOMORROW"// "ADD_NEW_MOOD";
 
-    var showAverage = function() {
-        $scope.has_added_new_mood = true;
+    var addFeelingToCookie = function(new_feeling){
+        var expireDate = new Date();
+        expireDate.setDate(expireDate.getDate() + 1)
+        $cookies.put('addedMood', new_feeling, { 'expires': expireDate });
+    }
+
+    $scope.showAverage = function() {
+        $scope.current_view = "AVERAGE_MOOD";
         $http.get("mood/averageForToday").error(function(data){
             console.error(JSON.stringify(data))
         }).success(function(response){
@@ -34,7 +41,8 @@ app.controller('moodCtrl', function($scope, $http) {
         $http.post("mood/add", $scope.new_mood).error(function(data){
             console.log("ERROR: " + JSON.stringify(data));
         }).success(function(data){
-            showAverage();
+            addFeelingToCookie($scope.new_mood.feeling);
+            $scope.showAverage();
         });
     }
 });
