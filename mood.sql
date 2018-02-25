@@ -29,7 +29,7 @@ CREATE TABLE `mood` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `mood_timestamp` (`timestamp`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `mood` (
 
 LOCK TABLES `mood` WRITE;
 /*!40000 ALTER TABLE `mood` DISABLE KEYS */;
-INSERT INTO `mood` VALUES (1,'I am feeling happy because I had a lovely weekend with my family. Although, I did feel a bit sad too, because my husband spent a lot of time working this weekend! But, it\'s for a good cause, right?!',0,'2018-02-25 09:25:47'),(2,'I am feeling good about the app that I\'ve built. \nI like the look, but have missed out on a few things that I wanted to get done like unit tests and trying out angular modals.',1,'2018-02-25 09:28:44');
+INSERT INTO `mood` VALUES (1,'I am feeling happy because I had a lovely weekend with my family. Although, I did feel a bit sad too, because my husband spent a lot of time working this weekend! But, it\'s for a good cause, right?!',0,'2018-02-25 09:25:47'),(2,'I am feeling good about the app that I\'ve built. \nI like the look, but have missed out on a few things that I wanted to get done like unit tests and trying out angular modals.',1,'2018-02-25 09:28:44'),(3,'Air con is way too cold.\nAnd it\'s blowing straight in my face.\nWhen will they come and fix the temperature??!!!',3,'2018-02-25 09:34:17');
 /*!40000 ALTER TABLE `mood` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-25 22:31:26
+-- Dump completed on 2018-02-25 22:35:10
