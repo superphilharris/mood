@@ -25,7 +25,7 @@
     opacity: 0.3;
 }
 .mood-buttons > .btn:hover {
-    opacity: 1 !important;
+    opacity: 0.8 !important;
 }
 
 
@@ -80,7 +80,7 @@
     width: 20%;
     padding-top: 20%;
     float: left;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 .average-mood-indicator {
 	position: absolute;
