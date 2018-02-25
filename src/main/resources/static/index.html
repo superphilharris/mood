@@ -87,11 +87,12 @@
 
     <div class="container" ng-show="current_view == 'TRY_TOMORROW'" ng-click="showAverage()">
         <h1 class="summary-title">Try Tomorrow</h1>
-        <p align="center">
+        <p class="try-tomorrow-message">
             Sorry, you have already submitted your response for today.<br/>
             Try again tomorrow!
             <br/><br/>
-            Click anywhere to see your team average.
+            Click to see your team average.
+            <br/><br/>
         </p>
     </div>
 </div>
@@ -103,6 +104,7 @@
     </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-cookies.js"></script>
 <script src="/js/index.js"></script>
 </body>
 

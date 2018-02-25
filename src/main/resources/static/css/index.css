@@ -93,3 +93,10 @@
 .average-mood-indicator > .svg-icon {
     width: auto;
 }
+
+
+/* ============== */
+/* Try tomorrow message */
+.try-tomorrow-message {
+    text-align: center;
+}
