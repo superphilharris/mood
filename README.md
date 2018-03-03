@@ -1,3 +1,13 @@
+## Mood Tracker for Team
+This will record the team's mood for the day.
+Each person is able to only record one feeling for the day,
+and an optional comment.
+Once the day expires then the team member can record another feeling.
+
+After the person has recorded their feeling, then they can see the overall team mood.
+
+
+
 ## Technologies Used
 * Spring Boot generated from https://start.spring.io
   * Spring MVC
