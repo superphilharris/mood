@@ -4,10 +4,10 @@ Each person is able to only record one feeling for the day,
 and an optional comment.
 Once the day expires then the team member can record another feeling.
 
-![alt text](https://raw.githubusercontent.com/superphilharris/mood/master/readme/mood.png)
+![](https://raw.githubusercontent.com/superphilharris/mood/master/readme/mood.png)
 
 After the person has recorded their feeling, then they can see the overall team mood.
-![alt text](https://raw.githubusercontent.com/superphilharris/mood/master/readme/mood-average.png)
+![](https://raw.githubusercontent.com/superphilharris/mood/master/readme/mood-average.png)
 
 
 ## Technologies Used
