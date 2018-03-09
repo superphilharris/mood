@@ -12,6 +12,7 @@ app.controller('moodCtrl', function($scope, $http, $cookies) {
     }
     $scope.current_view = ($cookies.get('LAST_FEELING') == null)? "ADD_NEW_MOOD" : "TRY_TOMORROW";
 
+
     var getTonight = function() {
         var tonight = new Date();
         tonight.setDate(tonight.getDate() + 1)
@@ -21,6 +22,7 @@ app.controller('moodCtrl', function($scope, $http, $cookies) {
     var setFeelingCookie = function(feeling){
         $cookies.put('LAST_FEELING', feeling, { expires: getTonight() })
     }
+
 
     $scope.showAverage = function() {
         $scope.current_view = "AVERAGE_MOOD";
