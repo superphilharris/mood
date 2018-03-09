@@ -5,6 +5,7 @@ import co.logbook.mood.model.MoodAverage;
 import co.logbook.mood.repository.MoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
@@ -19,7 +20,7 @@ public class MoodController {
     private MoodRepository moodRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody Mood addNewMood (@RequestBody Mood mood) {
+    public @ResponseBody Mood addNewMood (@RequestBody @Validated Mood mood) {
         return moodRepository.save(mood);
     }
 

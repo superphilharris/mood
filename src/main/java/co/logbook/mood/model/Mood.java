@@ -1,6 +1,7 @@
 package co.logbook.mood.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Entity
@@ -12,6 +13,7 @@ public class Mood {
 
     private Feeling feeling;
 
+    @Size(max=350, message="Comment must be less than 350 characters")
     private String comment;
 
     @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
