@@ -6,7 +6,6 @@
 
 - add unit tests to:
  - spring mvc
- - constructor of the average mood
 
 - fix the timestamp not being sent back after an add
 
