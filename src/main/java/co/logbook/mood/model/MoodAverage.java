@@ -3,6 +3,7 @@ package co.logbook.mood.model;
 import co.logbook.mood.model.Feeling;
 import co.logbook.mood.model.Mood;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class MoodAverage {
@@ -17,9 +18,9 @@ public class MoodAverage {
      * @param moods
      */
     public MoodAverage(List<Mood> moods) {
-        this.moods = moods;
-        this.average = (float) moods.stream().mapToInt(m -> m.getFeeling().getCode()).sum() / Math.max(1, moods.size());
-        this.closestFeeling = Feeling.valueOf(Math.round(this.average));
+        this.moods = (moods != null)? moods : new LinkedList<Mood>();
+        this.average = (float) this.moods.stream().mapToInt(m -> m.getFeeling().getCode()).sum() / Math.max(1, this.moods.size());
+        this.closestFeeling = (this.moods.size() > 0)? Feeling.valueOf(Math.round(this.average)) : null;
     }
 
     public List<Mood> getMoods() {
