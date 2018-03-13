@@ -1,6 +1,5 @@
 package co.logbook.mood.model;
 
-import co.logbook.mood.repository.MoodRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -71,7 +70,6 @@ public class MoodAverageTests {
         assertEquals(0f, moodAverage.getAverage(), 0.00001);
         assertEquals(null, moodAverage.getClosestFeeling());
     }
-
 
     private Mood aMood(Feeling feeling) {
         Mood mood = new Mood();

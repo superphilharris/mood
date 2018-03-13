@@ -2,21 +2,22 @@ package co.logbook.mood.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
-@Table(indexes = @Index(name="mood_timestamp", columnList = "timestamp"))
+@Table(indexes = @Index(name = "mood_timestamp", columnList = "timestamp"))
 public class Mood {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private Feeling feeling;
 
-    @Size(max=350, message="Comment must be less than 350 characters")
+    @Size(max = 350, message = "Comment must be less than 350 characters")
     private String comment;
 
-    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp timestamp;
 
     public String getComment() {
@@ -40,11 +41,12 @@ public class Mood {
         return timestamp;
     }
 
+    public void setTimestamp(Timestamp timestamp) { this.timestamp = timestamp; }
 
     public Integer getId() {
         return id;
     }
 
-
+    public void setId(Integer id) { this.id = id; }
 
 }
