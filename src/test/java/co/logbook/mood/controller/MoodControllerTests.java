@@ -1,5 +1,6 @@
 package co.logbook.mood.controller;
 
+import co.logbook.mood.MoodTestHelper;
 import co.logbook.mood.model.Feeling;
 import co.logbook.mood.model.Mood;
 import co.logbook.mood.repository.MoodRepository;
@@ -29,6 +30,8 @@ public class MoodControllerTests {
     @InjectMocks
     private MoodController moodController;
 
+    private MoodTestHelper moodTestHelper = new MoodTestHelper();
+
     @Mock
     private MoodRepository moodRepository = Mockito.mock(MoodRepository.class);
 
@@ -48,24 +51,9 @@ public class MoodControllerTests {
         feelings.add(Feeling.GRUMPY);
         List<Mood> moods = mockGetAllMoods(feelings);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/mood/all"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/mood/averageForToday"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
-    }
-
-
-    private List<Mood> convertFeelingsToMoods(List<Feeling> feelings) {
-        List<Mood> moods = new LinkedList<Mood>();
-        for (int i = 0; i < feelings.size(); i++) {
-            Feeling feeling = feelings.get(i);
-            Mood mood = new Mood();
-            mood.setFeeling(feeling);
-            mood.setComment("Comment for mood: " + feeling.toString());
-            mood.setId(i);
-            mood.setTimestamp(new Timestamp(i));
-            moods.add(mood);
-        }
-        return moods;
     }
 
 
@@ -76,8 +64,8 @@ public class MoodControllerTests {
      * @return the list of moods that will be returned when retrieved from the database
      */
     private List<Mood> mockGetAllMoods(List<Feeling> feelings) {
-        List<Mood> moods = convertFeelingsToMoods(feelings);
-        Mockito.when(moodRepository.findAll()).thenReturn(moods);
+        List<Mood> moods = moodTestHelper.convertFeelingsToMoods(feelings);
+        Mockito.when(moodRepository.findByTimestampBetween(Mockito.any(), Mockito.any())).thenReturn(moods);
         return moods;
     }
 }

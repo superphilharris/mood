@@ -29,10 +29,4 @@ public class MoodController {
         List<Mood> todaysMoods = moodRepository.findByTimestampBetween(TimeUtils.getTodayAtMidnight(), new Timestamp(System.currentTimeMillis()));
         return new MoodAverage(todaysMoods);
     }
-
-    @GetMapping(path="/all")
-    public @ResponseBody Iterable<Mood> getAllMoods() {
-        return moodRepository.findAll();
-    }
-
 }

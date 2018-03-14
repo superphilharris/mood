@@ -1,5 +1,6 @@
 package co.logbook.mood.model;
 
+import co.logbook.mood.MoodTestHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,21 +13,23 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MoodAverageTests {
-
+    private MoodTestHelper moodTestHelper = new MoodTestHelper();
 
     @Test
     public void moodAverageHappyAndNormal() {
         // Given I have 2 people - 1 happy and 1 normal
-        List<Mood> moods = new LinkedList<Mood>();
-        moods.add(aMood(Feeling.HAPPY)); // 0
-        moods.add(aMood(Feeling.NORMAL)); // 1
+        Feeling[] feelings = {
+                Feeling.HAPPY, // 0
+                Feeling.NORMAL // 1
+        };
+        List<Mood> moods = moodTestHelper.convertFeelingsToMoods(feelings);
 
 
         // When I get the average of them
         MoodAverage moodAverage = new MoodAverage(moods);
 
 
-        // Then ...
+        // Then the average should be 0.5 closest to the NORMAL feeling
         assertEquals(0.5f, moodAverage.getAverage(), 0.00000001);
         assertEquals(Feeling.NORMAL, moodAverage.getClosestFeeling());
     }
@@ -34,14 +37,16 @@ public class MoodAverageTests {
     @Test
     public void moodAverageHappyAndGrumpy() {
         // Given I have 2 people 1 happy and 1 grumpy
-        List<Mood> moods = new LinkedList<Mood>();
-        moods.add(aMood(Feeling.HAPPY));
-        moods.add(aMood(Feeling.GRUMPY));
+        Feeling[] feelings = {
+                Feeling.HAPPY,
+                Feeling.GRUMPY
+        };
+        List<Mood> moods = moodTestHelper.convertFeelingsToMoods(feelings);
 
         // When I get the average of them
         MoodAverage moodAverage = new MoodAverage(moods);
 
-        // Then ...
+        // Then the average should be 1.5 closest to the BIT_MEH feeling
         assertEquals(1.5f, moodAverage.getAverage(), 0.0000001);
         assertEquals(Feeling.BIT_MEH, moodAverage.getClosestFeeling());
     }
@@ -54,7 +59,7 @@ public class MoodAverageTests {
         // When I get the average of them
         MoodAverage moodAverage = new MoodAverage(moods);
 
-        // Then ...
+        // Then the average should be 0, with no closest feeling
         assertEquals(0f, moodAverage.getAverage(), 0.00001);
         assertEquals(null, moodAverage.getClosestFeeling());
     }
@@ -66,14 +71,9 @@ public class MoodAverageTests {
         // When I get the average of them
         MoodAverage moodAverage = new MoodAverage(moods);
 
-        // Then ...
+        // Then the average should be 0, with no closest feeling
         assertEquals(0f, moodAverage.getAverage(), 0.00001);
         assertEquals(null, moodAverage.getClosestFeeling());
     }
 
-    private Mood aMood(Feeling feeling) {
-        Mood mood = new Mood();
-        mood.setFeeling(feeling);
-        return mood;
-    }
 }
